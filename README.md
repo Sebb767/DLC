@@ -6,15 +6,15 @@ Dynamic Library(function) Caller - A small C# Library to call functions in unman
 Features
 --------
 
-- System independent - works on Windows + Linux. OSX isn't tested, but should work, too.
-- Unload librarys - if you don't need it any more, unload it. 
-- No caching - if you have a new version, don't worry about an old, loaded version.
-- Dynamic function search - you can call any function by name, no need to define them at compile time.
+- **System independent** - works on Windows + Linux. OSX isn't tested, but should work, too.
+- **Unload librarys** - if you don't need it any more, unload it. 
+- **No caching** - if you have a new version, don't worry about an old, loaded version.
+- **Dynamic function search** - you can call any function by name, no need to define them at compile time.
 
 How to use it
 -------------
 
-#### loading a library
+#### Loading a library
 
 Simply include the dlc.dll in your solution and create a new `DLC` class. The constructor hast 3 overloads:
 
@@ -24,7 +24,7 @@ Simply include the dlc.dll in your solution and create a new `DLC` class. The co
 
 The constructor throws a `ClassLoadingException` when something goes wrong. The library is loaded every time you create an instance, so reuse it if you need the same version again. 
 
-#### retrieving a function handle
+#### Retrieving a function handle
 You have two Options (assuming `DLC dlc = new DLC("native.so");`):
 
 1. Simply call `IntPtr myProc = dlc.getProc("yourProcedure");` to get a pointer to your function. If you have no idea what to do with your pointer, option 2 is for you.
@@ -34,7 +34,7 @@ You have two Options (assuming `DLC dlc = new DLC("native.so");`):
 
 Both functions throw a `ClassLoadingException` when something goes wrong and an `ObjectDisposedException` if the class was disposed beforehand.
 
-#### unloading a library
+#### Unloading a library
 Dispose your class instance via `dlc.Dispose();` or delete the reference and wait for the GC to do it. This class is save to be disposed by the GC and will close the native handle when deleted. If something goes wrong while disposing through, a `ClassLoadingException` will be thrown.
 
 Notes
@@ -43,12 +43,12 @@ Notes
 - There are two public static helper functions:
   - `DLC.isLinux()` returns wether you are running on Mono/Linux or OSX
   - `DLC.x64()` returns wether you are running on an 64bit OS with 64bit Mono.
-- The [builds](../../tree/master/DLC/bin) are up-to-date and free to download.
+- The [builds](../../tree/master/DLC/bin) are up-to-date and free to use.
 
 To do
 -----
 
-- Implement a bool to suppress the exception while disposing.
+- Implement a bool to suppress an exception when disposing.
 - Testing on OSX (I do not own a Mac, so feedback would be nice).
 
 
