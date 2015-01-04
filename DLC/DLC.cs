@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 namespace Sebb767.DLC
 {
 	/// <summary>
-	/// Class to load functions from unmanaged librarys.
+	/// Class to load functions from unmanaged libraries.
 	/// Use one instance per library version.
 	/// </summary>
 	public sealed class DLC : IDisposable
