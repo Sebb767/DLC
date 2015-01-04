@@ -7,6 +7,7 @@ using System;
  * 
  * (c) Sebb767, 2014
  **/
+using System.Runtime.InteropServices;
  
 namespace Sebb767.DLC
 {
@@ -69,8 +70,36 @@ namespace Sebb767.DLC
 			this.loader = isLinux() ? (Loader)new LoaderLinux(lib) : (Loader)new LoaderWindows(lib);
 		}
 
+		/// <summary>
+		/// Gets a pointer to the procedure by name.
+		/// </summary>
+		/// <returns>A IntPtr to the procedure.</returns>
+		/// <param name="name">The procedures name.</param>
+		public IntPtr getProc(string name)
+		{
+			return loader.getProcedure (name);
+		}
+
+		/// <summary>
+		/// Returns a delegate to call the native function.
+		/// </summary>
+		/// <returns>An instance of the given delegate type.</returns>
+		/// <param name="name">The procedures name.</param>
+		/// <param name="del">The type of your delegate. Use typeof(myFunctionDelegate) .</param>
+		public Delegate getProcDelegate(string name, Type del)
+		{
+			return Marshal.GetDelegateForFunctionPointer (loader.getProcedure (name), del);
+		}
+
 		#region dispose pattern
 
+		/// <summary>
+		/// Releases all resource used by the <see cref="Sebb767.DLC.DLC"/> object and unloads the corresponding library.
+		/// </summary>
+		/// <remarks>Call <see cref="Dispose"/> when you are finished using the <see cref="Sebb767.DLC.DLC"/>. The
+		/// <see cref="Dispose"/> method leaves the <see cref="Sebb767.DLC.DLC"/> in an unusable state. After calling
+		/// <see cref="Dispose"/>, you must release all references to the <see cref="Sebb767.DLC.DLC"/> so the garbage
+		/// collector can reclaim the memory that the <see cref="Sebb767.DLC.DLC"/> was occupying.</remarks>
 		public void Dispose()
 		{
 			this.Dispose (true);

@@ -28,6 +28,9 @@ namespace Sebb767.DLC
 
 		internal override IntPtr getProcedure(string procName)
 		{
+			if (disposed)
+				throw new ObjectDisposedException ("The library is already unloaded!");
+
 			IntPtr r = dlsym (hModule, procName);
 
 			if (r == IntPtr.Zero)
