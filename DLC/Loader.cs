@@ -35,7 +35,7 @@ namespace Sebb767.DLC
 			this.disposed = true;
 		}
 
-		internal virtual void Dispose()
+		public void Dispose()
 		{
 			Dispose (true);
 			GC.SuppressFinalize (this);

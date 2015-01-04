@@ -16,7 +16,10 @@ namespace Sebb767.DLC
 	/// </summary>
 	public sealed class DLC : IDisposable
 	{
-		private string library; // the library path
+		public string library {
+			get;
+			private set;
+		}
 		private Loader loader; // class to load the library
 
 		#region constructors
