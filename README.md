@@ -25,7 +25,7 @@ Simply include the dlc.dll in your solution and create a new `DLC` class. The co
 The constructor throws a `ClassLoadingException` when something goes wrong. The library is loaded every time you create an instance, so reuse it if you need the same version again. 
 
 #### Retrieving a function handle
-You have two Options (assuming `DLC dlc = new DLC("native.so");`):
+You have two options (assuming `DLC dlc = new DLC("native.so");`):
 
 1. Simply call `IntPtr myProc = dlc.getProc("yourProcedure");` to get a pointer to your function. If you have no idea what to do with your pointer, option 2 is for you.
 2. The delegate-ty way:
