@@ -1,7 +1,7 @@
 DLC
 ===
 
-Dynamic Library(function) Caller - A small C# Library to call functions in unmanaged libraries (.dll, .so). 
+Dynamic Library(function) Caller - A small C# library to call functions in dynamically loaded, unmanaged libraries (.dll, .so). 
 
 Features
 --------
